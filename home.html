@@ -1,0 +1,52 @@
+<div class="page-header">
+      			<h1>Class Management</h1>
+      			</div>
+					<div ng-repeat="post in posts">
+						<span class="glyphicon glyphicon-thumbs-up" ng-click="incVotes(post)"></span>
+						{{post.upvotes}}
+						<span style="font-size:20px; margin-left:10px;">
+					          <a ng-show="post.link" href="{{post.link}}">
+					            {{post.title}}
+					          </a>
+					          <span ng-hide="post.link">
+					            {{post.title}}
+					          </span>
+					     </span>
+					     <span>
+							  <a href="#/posts/{{$index}}">Comments</a>
+							</span>
+					</div>
+						
+						<hr>
+			
+			</div>
+
+		<form ng-submit="addPost()" style="margin-top:30px;">
+			
+		<center>
+			<h3>Add a new Post</h3>
+		  <div style="width :500px">	
+			<div class="form-group">
+	          <input type="text"
+	            class="form-control"
+	            placeholder="Title"
+	            ng-model="title">
+	          </input>
+            </div>
+
+
+            <div class="form-group ">
+	          <input type="text"
+	          class="form-control"
+	          placeholder="Link"
+	          ng-model="link">
+	          </input>
+            </div>
+           </div>
+
+				
+				
+			<button type="submit" class="btn btn-primary">Addpost</button>	
+
+		</center>	
+		</form>
