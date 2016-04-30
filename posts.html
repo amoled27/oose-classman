@@ -1,20 +1,37 @@
+<!-- to show a particular post on a page||  i guess i have to somehow sent a param here -->
 <div ng-repeat="post in posts">
 						
-<span style="font-size:20px; margin-left:10px;">
-	 <a ng-show="post.link" href="{{post.link}}">
-	   {{post.title}}
-	 </a>
-	 <span ng-hide="post.link">
-	   {{post.title}}
+	<span style="font-size:20px; margin-left:10px;">
+		 <a ng-show="post.link" href="{{post.link}}">
+		   {{post.title}}
+		 </a>
+		 <span ng-hide="post.link">
+		   {{post.title}}
+		 </span>
 	 </span>
- </span>
 </div>
 
+<!-- to show associated comments -->
  <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up"
-      ng-click="incrementUpvotes(comment)"></span>
-    {{comment.upvotes}} - by {{comment.author}}
-    <span style="font-size:20px; margin-left:10px;">
-      {{comment.body}}
-    </span>
+	    <span class="glyphicon glyphicon-thumbs-up"
+	      ng-click="incVotes(comment)"></span>
+
+	    {{comment.upvotes}} - by {{comment.author}}
+	    <span style="font-size:20px; margin-left:10px;">
+	      {{comment.cbody}}
+	    </span>
   </div>
+  
+<!-- add comment -->
+  <form ng-submit="addComment()"
+	    style="margin-top:30px;">
+	    <h3>Add a new comment</h3>
+
+	    <div class="form-group">
+	      <input type="text"
+	      class="form-control"
+	      placeholder="Comment"
+	      ng-model="cbody"></input>
+	    </div>
+	    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
